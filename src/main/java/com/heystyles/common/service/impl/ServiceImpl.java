@@ -66,6 +66,16 @@ public abstract class ServiceImpl<D extends DomainBean<ID>, E extends Entity<ID>
     @Transactional(
             propagation = Propagation.REQUIRED
     )
+    public void update(ID id, D domainBean) {
+        domainBean.setId(id);
+        this.validationService.validate(domainBean, Update.class);
+        E entity = (E) this.converterService.convertTo(domainBean, this.entityClass);
+        this.getDao().save(entity);
+    }
+
+    @Transactional(
+            propagation = Propagation.REQUIRED
+    )
     public void delete(ID id) {
         Optional.ofNullable(this.findById(id)).ifPresent((obj) -> {
             this.validationService.validate(obj, Delete.class);

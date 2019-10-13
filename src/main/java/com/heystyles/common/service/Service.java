@@ -10,6 +10,8 @@ public interface Service<D extends DomainBean<ID>, ID> {
 
     void update(D var1);
 
+    void update(ID id, D var1);
+
     void delete(ID var1);
 
     void delete(D var1);
