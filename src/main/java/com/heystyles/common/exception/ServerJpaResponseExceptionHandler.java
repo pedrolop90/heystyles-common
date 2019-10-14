@@ -40,28 +40,28 @@ public abstract class ServerJpaResponseExceptionHandler extends ServerResponseEx
 
     protected ResponseEntity<Object> handleEmptyResultDataFailure(EmptyResultDataAccessException ex, WebRequest request) {
         String message = this.getMessageSource().getMessage(
-                "jamestown.commons.not.found", (Object[]) null, LocaleContextHolder.getLocale());
+                "heystyles.commons.not.found", (Object[]) null, LocaleContextHolder.getLocale());
         ErrorResponse error = Responses.error(HttpStatus.NOT_FOUND, message, ex);
         return this.handleExceptionInternal(ex, error, new HttpHeaders(), error.getStatus(), request);
     }
 
     protected ResponseEntity<Object> handleDataBaseConnectionFailures(DataAccessResourceFailureException ex, WebRequest request) {
         String message = this.getMessageSource().getMessage(
-                "jamestown.commons.error.db.connection", (Object[]) null, LocaleContextHolder.getLocale());
+                "heystyles.commons.error.db.connection", (Object[]) null, LocaleContextHolder.getLocale());
         ErrorResponse error = Responses.error(HttpStatus.INTERNAL_SERVER_ERROR, message, ex);
         return this.handleExceptionInternal(ex, error, new HttpHeaders(), error.getStatus(), request);
     }
 
     protected ResponseEntity<Object> handleConstraintViolationFailure(ConstraintViolationException ex, WebRequest request) {
         String message = this.getMessageSource().getMessage(
-                "jamestown.commons.error.db.constraints", (Object[]) null, LocaleContextHolder.getLocale());
+                "heystyles.commons.error.db.constraints", (Object[]) null, LocaleContextHolder.getLocale());
         ErrorResponse error = Responses.error(HttpStatus.INTERNAL_SERVER_ERROR, message, ex);
         return this.handleExceptionInternal(ex, error, new HttpHeaders(), error.getStatus(), request);
     }
 
     protected ResponseEntity<Object> handleDataIntegrityViolationFailure(DataIntegrityViolationException ex, WebRequest request) {
         String message = this.getMessageSource().getMessage(
-                "jamestown.commons.error.db.constraints", (Object[]) null, LocaleContextHolder.getLocale());
+                "heystyles.commons.error.db.constraints", (Object[]) null, LocaleContextHolder.getLocale());
         ErrorResponse error = Responses.error(HttpStatus.INTERNAL_SERVER_ERROR, message, ex);
         return this.handleExceptionInternal(ex, error, new HttpHeaders(), error.getStatus(), request);
     }
